@@ -1,0 +1,519 @@
+/* ==========================================================
+   PRISM CLINICAL INTELLIGENCE WORKSPACE — DISTINCTIVE WHITE THEME
+   Modern medical research aesthetic with restrained palette
+   ========================================================== */
+
+:root {
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Surfaces & Backgrounds */
+  --prism-bg: #f8fafc;
+  --prism-bg-warm: #fcfdfd;
+  --prism-surface: #ffffff;
+  --prism-surface-muted: #f1f5f9;
+  --prism-surface-subtle: #f8fafc;
+
+  /* Typography Colors */
+  --prism-navy: #0f172a;
+  --prism-navy-soft: #1e293b;
+  --prism-slate: #475569;
+  --prism-slate-light: #64748b;
+  --prism-muted: #94a3b8;
+
+  /* Borders & Dividers */
+  --prism-border: #e2e8f0;
+  --prism-border-light: #edf2f7;
+  --prism-border-focus: #818cf8;
+
+  /* Primary & Accent Branding */
+  --prism-indigo: #4f46e5;
+  --prism-indigo-hover: #4338ca;
+  --prism-indigo-subtle: #eef2ff;
+  --prism-indigo-border: #c7d2fe;
+
+  --prism-teal: #0d9488;
+  --prism-teal-subtle: #f0fdfa;
+  --prism-teal-border: #99f6e4;
+
+  /* Semantic Status Colors */
+  --prism-emerald: #059669;
+  --prism-emerald-subtle: #ecfdf5;
+  --prism-emerald-border: #a7f3d0;
+
+  --prism-amber: #d97706;
+  --prism-amber-subtle: #fffbeb;
+  --prism-amber-border: #fde68a;
+
+  --prism-rose: #e11d48;
+  --prism-rose-subtle: #fff1f2;
+  --prism-rose-border: #fecdd3;
+
+  /* Tumor Classification Palette */
+  --tumor-glioma: #e11d48;
+  --tumor-glioma-bg: #fff1f2;
+  --tumor-glioma-border: #fecdd3;
+
+  --tumor-meningioma: #ea580c;
+  --tumor-meningioma-bg: #fff7ed;
+  --tumor-meningioma-border: #ffedd5;
+
+  --tumor-notumor: #059669;
+  --tumor-notumor-bg: #ecfdf5;
+  --tumor-notumor-border: #a7f3d0;
+
+  --tumor-pituitary: #7c3aed;
+  --tumor-pituitary-bg: #f5f3ff;
+  --tumor-pituitary-border: #ddd6fe;
+
+  /* Radii Scale */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 26px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-subtle: 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-card: 0 4px 12px -2px rgba(15, 23, 42, 0.05), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
+  --shadow-elevated: 0 12px 28px -6px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+  --shadow-hover: 0 16px 36px -8px rgba(79, 70, 229, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+}
+
+/* Base Reset & Styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--prism-bg);
+  color: var(--prism-navy);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App Shell Layout */
+.prism-shell {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--prism-bg);
+}
+
+/* Curved Left Sidebar */
+.prism-sidebar {
+  width: 270px;
+  background: var(--prism-surface);
+  border-right: 1px solid var(--prism-border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 40;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 2px 0 12px rgba(15, 23, 42, 0.03);
+}
+
+.prism-sidebar.collapsed {
+  width: 82px;
+}
+
+.sidebar-brand {
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--prism-border-light);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+}
+
+.nav-link-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 11px 16px;
+  border-radius: var(--radius-sm);
+  color: var(--prism-slate);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.nav-link-item:hover {
+  background-color: var(--prism-surface-muted);
+  color: var(--prism-navy);
+}
+
+.nav-link-item.active {
+  background-color: var(--prism-indigo-subtle);
+  color: var(--prism-indigo);
+  font-weight: 600;
+}
+
+.nav-link-item.active .nav-icon {
+  color: var(--prism-indigo);
+}
+
+.sidebar-footer {
+  padding: 16px 18px;
+  border-top: 1px solid var(--prism-border-light);
+  background: var(--prism-surface);
+}
+
+/* Main Content Workspace */
+.prism-workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--prism-bg);
+}
+
+/* Top Bar */
+.prism-topbar {
+  height: 68px;
+  background: var(--prism-surface);
+  border-bottom: 1px solid var(--prism-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.workspace-content {
+  flex: 1;
+  padding: 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Landing Wireframe Layout Components */
+.wireframe-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 1100px) {
+  .wireframe-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Navigate PRISM 4-Tile Panel */
+.nav-panel {
+  background: var(--prism-surface);
+  border: 1px solid var(--prism-border);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+}
+
+.nav-panel-title {
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--prism-navy);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tiles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 680px) {
+  .tiles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nav-tile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: var(--prism-surface);
+  border: 1px solid var(--prism-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.22s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--prism-border-focus);
+  box-shadow: var(--shadow-hover);
+}
+
+.nav-tile-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tile-icon-box {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tile-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--prism-navy);
+  margin-bottom: 4px;
+}
+
+.tile-desc {
+  font-size: 0.8rem;
+  color: var(--prism-slate-light);
+  line-height: 1.4;
+}
+
+/* Upper-Right System Status Panel */
+.status-panel {
+  background: var(--prism-surface);
+  border: 1px solid var(--prism-border);
+  border-radius: var(--radius-xl);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Analysis Data Panel */
+.analysis-panel {
+  background: var(--prism-surface);
+  border: 1px solid var(--prism-border);
+  border-radius: var(--radius-xl);
+  padding: 30px;
+  box-shadow: var(--shadow-card);
+}
+
+.analysis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Metric Cards Row */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.metric-card-white {
+  background: var(--prism-surface-subtle);
+  border: 1px solid var(--prism-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metric-card-val {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--prism-navy);
+  letter-spacing: -0.02em;
+}
+
+.metric-card-lbl {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--prism-slate-light);
+  letter-spacing: 0.04em;
+}
+
+/* White Theme Cards & Form Elements */
+.white-card {
+  background: var(--prism-surface);
+  border: 1px solid var(--prism-border);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: var(--prism-indigo);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+  text-decoration: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--prism-indigo-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: var(--prism-surface);
+  color: var(--prism-slate);
+  border: 1px solid var(--prism-border);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: var(--prism-surface-muted);
+  color: var(--prism-navy);
+  border-color: #cbd5e1;
+}
+
+/* Data Tables */
+.white-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--prism-border);
+  border-radius: var(--radius-md);
+  background: var(--prism-surface);
+}
+
+.white-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.white-table th {
+  padding: 14px 18px;
+  background: var(--prism-surface-subtle);
+  color: var(--prism-slate);
+  font-weight: 600;
+  border-bottom: 1px solid var(--prism-border);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.white-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--prism-border-light);
+  color: var(--prism-navy-soft);
+}
+
+.white-table tr:hover td {
+  background-color: #fafbfc;
+}
+
+/* Badge System */
+.badge-class {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.badge-glioma {
+  background: var(--tumor-glioma-bg);
+  color: var(--tumor-glioma);
+  border: 1px solid var(--tumor-glioma-border);
+}
+
+.badge-meningioma {
+  background: var(--tumor-meningioma-bg);
+  color: var(--tumor-meningioma);
+  border: 1px solid var(--tumor-meningioma-border);
+}
+
+.badge-notumor {
+  background: var(--tumor-notumor-bg);
+  color: var(--tumor-notumor);
+  border: 1px solid var(--tumor-notumor-border);
+}
+
+.badge-pituitary {
+  background: var(--tumor-pituitary-bg);
+  color: var(--tumor-pituitary);
+  border: 1px solid var(--tumor-pituitary-border);
+}
+
+/* Pulse animation */
+@keyframes pulse-dot {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse-dot 2s infinite ease-in-out;
+}

@@ -1,0 +1,97 @@
+# ==========================================
+# PRISM Root .gitignore
+# Precision Radiology Imaging for Solid Masses
+# ==========================================
+
+# Dependencies
+node_modules/
+*/node_modules/
+package-lock.json.bak
+
+# Build outputs
+dist/
+dist-ssr/
+*/dist/
+build/
+*.local
+
+# Python cache & compiled bytecode
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+*/.venv/
+venv/
+*/venv/
+env/
+*/env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment files & secrets
+.env
+.env.local
+*.env
+!*.env.example
+!brain-tumor-backend/.env.example
+
+# Local SQLite databases & patient uploads
+*.db
+*.sqlite3
+data/*.db
+data/*.sqlite3
+data/uploads/*
+!data/uploads/.gitkeep
+!data/.gitkeep
+brain-tumor-backend/data/*.db
+brain-tumor-backend/data/*.sqlite3
+brain-tumor-backend/data/uploads/*
+!brain-tumor-backend/data/uploads/.gitkeep
+!brain-tumor-backend/data/.gitkeep
+
+# Logs
+logs/
+*/logs/*.log
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+!brain-tumor-backend/logs/.gitkeep
+
+# Testing & coverage caches
+.pytest_cache/
+*/.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# IDE & OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
